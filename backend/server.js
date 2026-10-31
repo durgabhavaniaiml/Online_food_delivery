@@ -16,26 +16,25 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Initialize DB connection
-connectDB();
-
 app.use(express.json());
 app.use(cors());
 app.use('/images', express.static(path.join(__dirname, 'uploads')));
 
-// Ensure DB is connected for incoming requests
+// Ensure DB is connected for all incoming requests
 app.use(async (req, res, next) => {
   try {
-    if (mongoose.connection.readyState !== 1) {
-      await connectDB();
-    }
+    await connectDB();
+    next();
   } catch (err) {
-    console.error('Middleware DB connect error:', err);
+    console.error('Database connection middleware error:', err.message);
+    return res.status(503).json({
+      success: false,
+      message: 'Database connection failed. Please ensure MongoDB Atlas Network Access has 0.0.0.0/0 allowed.',
+    });
   }
-  next();
 });
 
-// Comprehensive Health check endpoint
+// Health check endpoint
 const handleHealth = (req, res) => {
   res.json({
     status: 'ok',
@@ -78,7 +77,10 @@ app.use((err, req, res, next) => {
   });
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, '0.0.0.0', () => console.log(`Server running on port ${PORT}`));
+// Only start the HTTP listener when NOT running in a Vercel serverless environment
+if (!process.env.VERCEL) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
 
 export default app;
