@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export const StoreContext = createContext(null)
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+const BASE_URL = import.meta.env.VITE_API_URL || (typeof window !== 'undefined' && window.location.hostname !== 'localhost' ? '' : 'http://localhost:5000')
 
 export const StoreProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState({})
