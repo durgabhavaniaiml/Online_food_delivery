@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import mongoose from 'mongoose';
 import connectDB from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
 import foodRoutes from './routes/foodRoutes.js';
@@ -22,13 +23,31 @@ app.use(express.json());
 app.use(cors());
 app.use('/images', express.static(path.join(__dirname, 'uploads')));
 
-// Ensure DB is connected for requests
+// Ensure DB is connected for all incoming requests
 app.use(async (req, res, next) => {
-  await connectDB();
+  try {
+    if (mongoose.connection.readyState !== 1) {
+      await connectDB();
+    }
+  } catch (err) {
+    console.error('Middleware DB connect error:', err);
+  }
   next();
 });
 
-// Auth Routes (support both with /api and without /api)
+// Health check endpoint
+const handleHealth = (req, res) => {
+  res.json({
+    status: 'ok',
+    dbState: mongoose.connection.readyState,
+    dbConnected: mongoose.connection.readyState === 1,
+    time: new Date().toISOString(),
+  });
+};
+app.get('/api/health', handleHealth);
+app.get('/health', handleHealth);
+
+// Auth Routes (both /api/auth and /auth)
 app.use('/api/auth', authRoutes);
 app.use('/auth', authRoutes);
 
@@ -46,6 +65,15 @@ app.use('/cart', cartRoutes);
 
 app.get('/', (req, res) => {
   res.send('FoodDash API is running...');
+});
+
+// Global Error Handler
+app.use((err, req, res, next) => {
+  console.error('SERVER_ERROR:', err);
+  res.status(err.status || 500).json({
+    success: false,
+    message: err.message || 'Internal Server Error',
+  });
 });
 
 const PORT = process.env.PORT || 5000;
