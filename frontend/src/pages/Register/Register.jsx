@@ -26,7 +26,9 @@ function Register() {
         toast.error(res.data.message)
       }
     } catch (err) {
-      toast.error('Unable to connect to server. Check if backend is running.')
+      console.error('Registration error:', err)
+      const errorMsg = err.response?.data?.message || err.message || 'Unable to connect to server.'
+      toast.error(errorMsg)
     } finally {
       setLoading(false)
     }
