@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(cors());
 app.use('/images', express.static(path.join(__dirname, 'uploads')));
 
-// Ensure DB is connected for all incoming requests
+// Ensure DB is connected for incoming requests
 app.use(async (req, res, next) => {
   try {
     if (mongoose.connection.readyState !== 1) {
@@ -35,19 +35,21 @@ app.use(async (req, res, next) => {
   next();
 });
 
-// Health check endpoint
+// Comprehensive Health check endpoint
 const handleHealth = (req, res) => {
   res.json({
     status: 'ok',
     dbState: mongoose.connection.readyState,
     dbConnected: mongoose.connection.readyState === 1,
+    hasMongoUriEnv: !!process.env.MONGO_URI,
+    hasJwtSecretEnv: !!process.env.JWT_SECRET,
     time: new Date().toISOString(),
   });
 };
 app.get('/api/health', handleHealth);
 app.get('/health', handleHealth);
 
-// Auth Routes (both /api/auth and /auth)
+// Auth Routes (both with and without /api prefix)
 app.use('/api/auth', authRoutes);
 app.use('/auth', authRoutes);
 
@@ -77,6 +79,6 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, '0.0.0.0', () => console.log(`Server running on port ${PORT}`));
 
 export default app;

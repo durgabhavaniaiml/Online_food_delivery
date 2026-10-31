@@ -2,6 +2,7 @@ import User from '../models/User.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import validator from 'validator';
+import mongoose from 'mongoose';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'fooddash_super_secret_jwt_key_2024';
 
@@ -15,6 +16,13 @@ const registerUser = async (req, res) => {
   try {
     if (!name || !email || !password) {
       return res.status(400).json({ success: false, message: 'Please provide name, email, and password' });
+    }
+
+    if (mongoose.connection.readyState !== 1) {
+      return res.status(503).json({
+        success: false,
+        message: 'Database is still connecting. Please check Atlas Network Access allows 0.0.0.0/0.',
+      });
     }
 
     const trimmedEmail = email.trim().toLowerCase();
@@ -54,6 +62,13 @@ const loginUser = async (req, res) => {
   try {
     if (!email || !password) {
       return res.status(400).json({ success: false, message: 'Please provide email and password' });
+    }
+
+    if (mongoose.connection.readyState !== 1) {
+      return res.status(503).json({
+        success: false,
+        message: 'Database is still connecting. Please check Atlas Network Access allows 0.0.0.0/0.',
+      });
     }
 
     const trimmedEmail = email.trim().toLowerCase();

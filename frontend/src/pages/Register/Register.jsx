@@ -27,7 +27,11 @@ function Register() {
       }
     } catch (err) {
       console.error('Registration error:', err)
-      const errorMsg = err.response?.data?.message || err.message || 'Unable to connect to server.'
+      const errorMsg =
+        err.response?.data?.message ||
+        (typeof err.response?.data === 'string' ? err.response.data : null) ||
+        err.message ||
+        'Unable to connect to server.'
       toast.error(errorMsg)
     } finally {
       setLoading(false)
