@@ -1,0 +1,155 @@
+.menu-page {
+  min-height: 80vh;
+}
+
+.menu-controls {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding-top: 28px;
+  padding-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.search-wrap {
+  flex: 1;
+  position: relative;
+  min-width: 240px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 14px 12px 40px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 15px;
+  background: white;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  border-color: #ff6b35;
+}
+
+.clear-search {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #999;
+  font-size: 16px;
+}
+
+.sort-select {
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 15px;
+  background: white;
+  cursor: pointer;
+  color: #4a5568;
+  transition: border-color 0.2s;
+}
+
+.sort-select:focus {
+  border-color: #ff6b35;
+}
+
+.menu-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  padding-bottom: 60px;
+}
+
+.menu-sidebar h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.menu-sidebar ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cat-btn {
+  width: 100%;
+  text-align: left;
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #4a5568;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.cat-btn:hover {
+  background: #fff3ee;
+  color: #ff6b35;
+}
+
+.cat-btn.active {
+  background: #ff6b35;
+  color: white;
+  font-weight: 600;
+}
+
+.result-count {
+  font-size: 14px;
+  color: #718096;
+  margin-bottom: 20px;
+}
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: #a0aec0;
+}
+
+.empty-state h3 {
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: #4a5568;
+}
+
+@media (max-width: 768px) {
+  .menu-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-sidebar ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .cat-btn {
+    width: auto;
+    padding: 8px 14px;
+  }
+}

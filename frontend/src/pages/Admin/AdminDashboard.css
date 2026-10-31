@@ -1,0 +1,237 @@
+.admin-page {
+  min-height: 80vh;
+}
+
+.admin-container {
+  padding: 32px 20px 60px;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 10px 24px;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #4a5568;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab-btn:hover {
+  border-color: #ff6b35;
+  color: #ff6b35;
+}
+
+.tab-btn.active {
+  background: #ff6b35;
+  border-color: #ff6b35;
+  color: white;
+}
+
+.no-data {
+  text-align: center;
+  color: #a0aec0;
+  padding: 40px;
+  font-size: 16px;
+}
+
+.admin-order-card {
+  background: white;
+  border-radius: 12px;
+  padding: 18px 24px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  flex-wrap: wrap;
+}
+
+.admin-order-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  flex: 1;
+  font-size: 14px;
+  color: #4a5568;
+}
+
+.admin-order-info strong {
+  color: #2d3748;
+  font-size: 15px;
+}
+
+.admin-amount {
+  font-weight: 700;
+  color: #ff6b35;
+  font-size: 15px;
+}
+
+.admin-addr {
+  color: #a0aec0;
+}
+
+.status-select {
+  padding: 8px 14px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #2d3748;
+  background: white;
+}
+
+.status-select:focus {
+  border-color: #ff6b35;
+  outline: none;
+}
+
+.food-list-admin {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-food-row {
+  background: white;
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.food-emoji {
+  font-size: 28px;
+}
+
+.food-info-admin {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.food-info-admin strong {
+  font-size: 15px;
+  color: #2d3748;
+}
+
+.food-info-admin span {
+  font-size: 13px;
+  color: #ff6b35;
+  font-weight: 600;
+}
+
+.food-price-admin {
+  font-weight: 700;
+  font-size: 16px;
+  color: #2d3748;
+}
+
+.remove-btn {
+  padding: 8px 14px;
+  background: #fff5f5;
+  border: 2px solid #fed7d7;
+  color: #e53e3e;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.remove-btn:hover {
+  background: #e53e3e;
+  color: white;
+  border-color: #e53e3e;
+}
+
+.add-food-form {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 600px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.add-food-form h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 24px;
+}
+
+.add-food-form .form-group {
+  margin-bottom: 18px;
+}
+
+.add-food-form label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 6px;
+}
+
+.add-food-form input,
+.add-food-form textarea,
+.add-food-form select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 15px;
+  color: #2d3748;
+  transition: border-color 0.2s;
+  font-family: inherit;
+}
+
+.add-food-form input:focus,
+.add-food-form textarea:focus,
+.add-food-form select:focus {
+  border-color: #ff6b35;
+  outline: none;
+}
+
+.add-food-form textarea {
+  resize: vertical;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.btn-add-food {
+  width: 100%;
+  padding: 14px;
+  background: #ff6b35;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 8px;
+}
+
+.btn-add-food:hover {
+  background: #e55a2b;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255,107,53,0.35);
+}

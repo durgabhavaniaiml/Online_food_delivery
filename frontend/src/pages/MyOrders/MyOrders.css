@@ -1,0 +1,137 @@
+.orders-page {
+  min-height: 80vh;
+}
+
+.orders-container {
+  padding: 32px 20px 60px;
+}
+
+.no-orders {
+  text-align: center;
+  padding: 80px 20px;
+  color: #718096;
+}
+
+.no-orders h3 {
+  font-size: 22px;
+  color: #2d3748;
+  margin-bottom: 8px;
+}
+
+.order-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: box-shadow 0.2s;
+}
+
+.order-card:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.order-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.order-id {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.order-icon {
+  font-size: 32px;
+}
+
+.order-num {
+  font-size: 16px;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.order-date {
+  font-size: 13px;
+  color: #a0aec0;
+  margin-top: 2px;
+}
+
+.order-status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.order-items-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.item-tag {
+  background: #f7f8fa;
+  color: #4a5568;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.item-tag.more {
+  background: #fff3ee;
+  color: #ff6b35;
+}
+
+.order-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.order-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: #4a5568;
+}
+
+.dot {
+  color: #cbd5e0;
+}
+
+.order-amount {
+  font-weight: 700;
+  color: #ff6b35;
+  font-size: 17px;
+}
+
+.track-btn {
+  padding: 8px 18px;
+  background: transparent;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a5568;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.track-btn:hover {
+  border-color: #ff6b35;
+  color: #ff6b35;
+}
